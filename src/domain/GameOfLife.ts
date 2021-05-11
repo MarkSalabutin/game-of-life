@@ -70,7 +70,7 @@ export class GameOfLife {
     cellLocationsToMakeAlive.forEach((l) => this.setCell(l, Cell.Alive));
   }
 
-  private forEachCell(callback: (c: Cell, location: Location) => void): void {
+  forEachCell(callback: (c: Cell, location: Location) => void): void {
     this.board.forEach((row, y) => row.forEach((cell, x) => callback(cell, { y, x })));
   }
 

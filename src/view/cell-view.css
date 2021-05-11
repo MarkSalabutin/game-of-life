@@ -1,0 +1,13 @@
+.game-board__cell {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.game-board__cell--alive {
+  background-color: black;
+}
+
+.game-board__cell--dead {
+  background-color: white;
+}

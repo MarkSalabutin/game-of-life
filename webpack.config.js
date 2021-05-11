@@ -12,7 +12,8 @@ module.exports = (args = {}) => {
     devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
     module: {
       rules: [
-        { test: /\.(ts)x?$/, use: 'babel-loader', exclude: /node_modules/ },
+        { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+        { test: /\.(js|ts)x?$/, use: 'babel-loader', exclude: /node_modules/ },
       ],
     },
     plugins: [
@@ -21,10 +22,10 @@ module.exports = (args = {}) => {
       new ForkTsCheckerWebpackPlugin(),
     ],
     resolve: {
-      extensions: ['.tsx', '.ts'],
+      extensions: ['.tsx', '.ts', '.js', '.jsx', '.css'],
     },
     output: {
-      filename: '[name].[hash].bundle.js',
+      filename: '[name].[contenthash].bundle.js',
       publicPath: '/',
       path: path.resolve(__dirname, './dist'),
     },
@@ -36,5 +37,8 @@ module.exports = (args = {}) => {
       port: 3000,
     },
     optimization: { splitChunks: { chunks: 'all' } },
+    stats: {
+      errorDetails: true,
+    },
   };
 };

@@ -1,3 +1,3 @@
-import { GameOfLife } from './domain/GameOfLife';
+import { render } from './view';
 
-new GameOfLife();
+render();
