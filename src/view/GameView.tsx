@@ -5,6 +5,8 @@ import './game-view.css';
 
 const game = new GameOfLife(50, 50);
 
+const GENERATION_DURATION = 400;
+
 export const GameView = () => {
   const [board, setBoard] = useState(() => game.getBoard());
 
@@ -20,7 +22,7 @@ export const GameView = () => {
     const intervalId = setInterval(() => {
       game.nextGeneration();
       setBoard([...game.getBoard()]);
-    }, 400);
+    }, GENERATION_DURATION);
 
     return () => clearInterval(intervalId);
   }, []);
